@@ -1,0 +1,67 @@
+<view class="container page-history">
+
+  <!-- 统计概览 -->
+  <view class="stats-section" wx:if="{{hasRecords}}">
+    <view class="stats-row">
+      <view class="stat-card">
+        <text class="stat-value">{{bestTime}}</text>
+        <text class="stat-label">最佳 (秒)</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-value">{{avgTime}}</text>
+        <text class="stat-label">平均 (秒)</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-value">{{records.length}}</text>
+        <text class="stat-label">总次数</text>
+      </view>
+    </view>
+    <view class="stats-sub">
+      <text class="stats-sub-text">⚡ 自动 {{autoCount}}次 · 👆 手动 {{manualCount}}次</text>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!hasRecords}}">
+    <text class="empty-icon">📊</text>
+    <text class="empty-text">还没有记录</text>
+    <text class="empty-hint">去测一次0-100吧！</text>
+    <button class="btn-primary" style="width: 320rpx; margin-top: 32rpx;" bindtap="onTapBack">开始测试</button>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="records-section" wx:if="{{hasRecords}}">
+    <view class="section-header">
+      <text class="section-title">全部记录</text>
+      <text class="clear-btn" bindtap="onTapClear">清空</text>
+    </view>
+
+    <view class="record-list">
+      <view class="record-card {{item.isBest ? 'record-best' : ''}}" wx:for="{{records}}" wx:key="id">
+        <view class="record-card-top">
+          <view class="record-left">
+            <text class="record-mode-icon">{{item.mode === 'auto' ? '⚡' : '👆'}}</text>
+            <view class="record-info">
+              <text class="record-date">{{item.dateStr}}</text>
+              <text class="record-mode-label">{{item.targetStr}} · {{item.mode === 'auto' ? '自动模式' : '手动模式'}}</text>
+            </view>
+          </view>
+          <view class="record-right">
+            <text class="record-time {{item.isBest ? 'record-time-best' : ''}}">{{item.timeStr}}</text>
+            <text class="record-time-unit">秒</text>
+            <view class="record-best-badge" wx:if="{{item.isBest}}">
+              <text class="badge-text">BEST</text>
+            </view>
+          </view>
+        </view>
+        <view class="record-card-bottom" wx:if="{{item.maxSpeed}}">
+          <text class="record-max-speed">最高速度: {{item.maxSpeed}} km/h</text>
+          <text class="record-delete" catchtap="onDeleteItem" data-id="{{item.id}}">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 广告位预留 -->
+  <!-- <ad unit-id="{{adBannerId}}" ad-intervals="30" binderror="onAdError"></ad> -->
+</view>
