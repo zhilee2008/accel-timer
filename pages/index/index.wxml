@@ -1,0 +1,102 @@
+<view class="container page-index">
+  <!-- 头部品牌区 -->
+  <view class="header">
+    <view class="logo-area">
+      <view class="logo-icon">
+        <text class="logo-text">0-100</text>
+      </view>
+      <text class="app-title">百公里加速计时器</text>
+      <text class="app-subtitle">测测你的真实加速成绩</text>
+    </view>
+  </view>
+
+  <!-- 最佳成绩卡片 -->
+  <view class="card best-card" wx:if="{{bestTime}}">
+    <text class="card-label">🏆 最佳成绩</text>
+    <view class="best-time">
+      <text class="best-time-value">{{bestTime.toFixed(2)}}</text>
+      <text class="best-time-unit">秒</text>
+    </view>
+    <text class="record-count">共 {{recordCount}} 次记录</text>
+  </view>
+
+  <!-- 目标速度选择 -->
+  <view class="target-section">
+    <view class="section-title">目标速度</view>
+    <view class="target-tabs">
+      <view class="target-tab {{targetSpeed === 50 ? 'active' : ''}}" bindtap="onSelectTarget" data-speed="50">
+        <text class="target-tab-num">50</text>
+        <text class="target-tab-unit">km/h</text>
+      </view>
+      <view class="target-tab {{targetSpeed === 100 ? 'active' : ''}}" bindtap="onSelectTarget" data-speed="100">
+        <text class="target-tab-num">100</text>
+        <text class="target-tab-unit">km/h</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 模式选择 -->
+  <view class="mode-section">
+    <view class="section-title">选择模式</view>
+    
+    <!-- 自动模式 -->
+    <view class="card mode-card" bindtap="onTapAuto">
+      <view class="mode-header">
+        <text class="mode-icon">⚡</text>
+        <view class="mode-info">
+          <text class="mode-name">自动计时</text>
+          <text class="mode-desc">自动检测起步，GPS实时测速</text>
+        </view>
+      </view>
+      <view class="mode-tags">
+        <text class="tag">GPS测速</text>
+        <text class="tag">加速度检测</text>
+        <text class="tag">免操作</text>
+      </view>
+    </view>
+
+    <!-- 手动模式 -->
+    <view class="card mode-card" bindtap="onTapManual">
+      <view class="mode-header">
+        <text class="mode-icon">👆</text>
+        <view class="mode-info">
+          <text class="mode-name">手动计时</text>
+          <text class="mode-desc">手动控制，适合自定起止时刻</text>
+        </view>
+      </view>
+      <view class="mode-tags">
+        <text class="tag tag-blue">手动触发</text>
+        <text class="tag tag-blue">灵活控制</text>
+        <text class="tag tag-blue">GPS测速</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最近记录 -->
+  <view class="recent-section" wx:if="{{records.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">最近记录</text>
+      <text class="section-more" bindtap="onTapHistory">查看全部 ›</text>
+    </view>
+    <view class="card record-list">
+      <view class="record-item" wx:for="{{records}}" wx:key="id">
+        <view class="record-left">
+          <text class="record-mode">{{item.mode === 'auto' ? '⚡' : '👆'}}</text>
+          <text class="record-date">{{item.dateStr}}</text>
+        </view>
+        <view class="record-right">
+          <text class="record-time">{{item.timeStr}}</text>
+          <text class="record-unit">秒</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 历史记录入口按钮（无记录时） -->
+  <view class="history-btn-wrap" wx:if="{{records.length === 0}}">
+    <button class="btn-secondary" bindtap="onTapHistory">📋 历史记录（暂无）</button>
+  </view>
+
+  <!-- 广告位预留 - 成为流量主后启用 -->
+  <!-- <ad unit-id="{{adBannerId}}" ad-intervals="30" binderror="onAdError"></ad> -->
+</view>
