@@ -1,0 +1,86 @@
+<view class="container page-timer">
+
+  <!-- 速度显示区 -->
+  <view class="speed-section {{state === 'counting' ? 'counting' : ''}} {{state === 'finished' ? 'finished' : ''}}">
+    <!-- 当前速度 -->
+    <view class="speed-display">
+      <text class="speed-value {{state === 'finished' ? 'speed-value-result' : ''}}">{{state === 'finished' ? resultTimeStr : displayTime}}</text>
+      <text class="speed-unit-label">{{state === 'finished' ? '秒' : '秒'}}</text>
+    </view>
+    <text class="status-text">{{statusText}}</text>
+
+    <!-- 实时速度条 -->
+    <view class="speed-bar-wrap" wx:if="{{state !== 'idle'}}">
+      <view class="speed-info-row">
+        <text class="speed-label">实时速度</text>
+        <text class="speed-current">{{currentSpeed}} km/h</text>
+      </view>
+      <view class="speed-bar-bg">
+        <view class="speed-bar-fill" style="width: {{currentSpeed / TARGET_SPEED * 100 > 100 ? 100 : currentSpeed / TARGET_SPEED * 100}}%"></view>
+        <view class="speed-bar-target"></view>
+      </view>
+      <view class="speed-bar-labels">
+        <text class="speed-bar-label-start">0</text>
+        <text class="speed-bar-label-end">100 km/h</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 模式标签 -->
+  <!-- 模式标签 + 调试信息 -->
+  <view class="mode-badge">
+    <text class="mode-badge-text">{{mode === 'auto' ? '⚡ 自动模式' : '👆 手动模式'}} · 0-{{targetSpeed}}</text>
+    <text class="mode-badge-text" wx:if="{{speedSource}}" style="margin-left: 12rpx; font-size: 20rpx; opacity: 0.4;">{{speedSource}}</text>
+  </view>
+
+  <!-- 操作按钮区 -->
+  <view class="action-section safe-bottom">
+
+    <!-- 空闲状态 -->
+    <block wx:if="{{state === 'idle'}}">
+      <button class="btn-primary btn-start" bindtap="{{mode === 'auto' ? 'onTapReady' : 'onTapStart'}}">
+        {{mode === 'auto' ? '准备起步' : '开始计时'}}
+      </button>
+      <button class="btn-secondary btn-back" bindtap="onTapBack">返回</button>
+    </block>
+
+    <!-- 准备状态（自动模式） -->
+    <block wx:elif="{{state === 'ready'}}">
+      <view class="waiting-indicator">
+        <view class="waiting-dot"></view>
+        <text class="waiting-text">等待检测起步...</text>
+      </view>
+      <button class="btn-secondary" bindtap="onTapReset">取消</button>
+    </block>
+
+    <!-- 计时中 -->
+    <block wx:elif="{{state === 'counting'}}">
+      <button class="btn-primary btn-stop" bindtap="onTapStop" wx:if="{{mode === 'manual'}}">
+        到达{{targetSpeed}}！
+      </button>
+      <view class="counting-hint" wx:if="{{mode === 'auto'}}">
+        <text class="hint-text">加速中 - 到达{{targetSpeed}}km/h自动停止</text>
+      </view>
+      <button class="btn-secondary btn-cancel" bindtap="onTapReset">取消</button>
+    </block>
+
+    <!-- 完成 -->
+    <block wx:elif="{{state === 'finished'}}">
+      <view class="result-section">
+        <view class="result-row">
+          <text class="result-label">最高速度</text>
+          <text class="result-value">{{maxSpeed}} km/h</text>
+        </view>
+      </view>
+      <button class="btn-primary" bindtap="onTapReset">再来一次</button>
+      <button class="btn-secondary" bindtap="onTapBack">返回首页</button>
+      <button class="btn-share" open-type="share">
+        🏁 分享我的成绩
+      </button>
+    </block>
+
+  </view>
+
+  <!-- 广告位预留 -->
+  <!-- <ad unit-id="{{adBannerId}}" ad-intervals="30" binderror="onAdError"></ad> -->
+</view>
