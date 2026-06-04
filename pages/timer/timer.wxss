@@ -1,0 +1,236 @@
+/* 计时器页面 - 赛车仪表盘风格 */
+
+.page-timer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 32rpx;
+}
+
+/* 速度/时间显示区 */
+.speed-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx 0 40rpx;
+}
+
+.speed-display {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 16rpx;
+}
+
+.speed-value {
+  font-size: 120rpx;
+  font-weight: 900;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -2rpx;
+}
+
+.speed-value-result {
+  font-size: 140rpx;
+  color: #e94560;
+}
+
+.speed-unit-label {
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.4);
+  margin-left: 12rpx;
+}
+
+.status-text {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 40rpx;
+}
+
+/* 计时中动画 */
+.counting .speed-value {
+  animation: countPulse 1s ease-in-out infinite;
+}
+
+@keyframes countPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.finished .speed-value-result {
+  animation: none;
+}
+
+/* 速度条 */
+.speed-bar-wrap {
+  width: 100%;
+  max-width: 600rpx;
+}
+
+.speed-info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.speed-label {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.speed-current {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #4fc3f7;
+  font-variant-numeric: tabular-nums;
+}
+
+.speed-bar-bg {
+  height: 16rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.speed-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4fc3f7, #e94560);
+  border-radius: 8rpx;
+  transition: width 0.3s ease-out;
+  min-width: 0;
+}
+
+.speed-bar-target {
+  position: absolute;
+  right: 0;
+  top: -4rpx;
+  width: 4rpx;
+  height: 24rpx;
+  background: #e94560;
+  border-radius: 2rpx;
+}
+
+.speed-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8rpx;
+}
+
+.speed-bar-label-start,
+.speed-bar-label-end {
+  font-size: 20rpx;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* 模式标签 */
+.mode-badge {
+  text-align: center;
+  margin-bottom: 24rpx;
+}
+
+.mode-badge-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8rpx 24rpx;
+  border-radius: 20rpx;
+}
+
+/* 操作按钮区 */
+.action-section {
+  padding-bottom: calc(32rpx + env(safe-area-inset-bottom));
+}
+
+.btn-start {
+  margin-bottom: 20rpx;
+  font-size: 36rpx;
+  padding: 36rpx 0;
+}
+
+.btn-stop {
+  background: linear-gradient(135deg, #e94560, #ff6b6b);
+  margin-bottom: 20rpx;
+  font-size: 36rpx;
+  padding: 36rpx 0;
+}
+
+.btn-back,
+.btn-cancel {
+  margin-top: 12rpx;
+}
+
+/* 等待指示器 */
+.waiting-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.waiting-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #4fc3f7;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.waiting-text {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 计时中提示 */
+.counting-hint {
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.hint-text {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* 结果区域 */
+.result-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16rpx;
+  padding: 24rpx 32rpx;
+  margin-bottom: 24rpx;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-label {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.result-value {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #4fc3f7;
+}
+
+/* 分享按钮 */
+.btn-share {
+  margin-top: 16rpx;
+  background: none;
+  border: 2rpx solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 28rpx;
+  border-radius: 16rpx;
+  padding: 20rpx 0;
+}
+
+.btn-share::after {
+  border: none;
+}
