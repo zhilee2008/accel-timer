@@ -1,0 +1,277 @@
+.page-index {
+  padding-bottom: calc(32rpx + env(safe-area-inset-bottom));
+}
+
+/* 头部 */
+.header {
+  text-align: center;
+  padding: 60rpx 0 40rpx;
+}
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 36rpx;
+  background: linear-gradient(135deg, #e94560, #0f3460);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(233, 69, 96, 0.3);
+}
+
+.logo-text {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1rpx;
+}
+
+.app-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+
+.app-subtitle {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 最佳成绩 */
+.best-card {
+  text-align: center;
+  margin-bottom: 40rpx;
+  background: linear-gradient(135deg, rgba(233, 69, 96, 0.15), rgba(15, 52, 96, 0.3));
+  border-color: rgba(233, 69, 96, 0.2);
+}
+
+.card-label {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.best-time {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 12rpx;
+}
+
+.best-time-value {
+  font-size: 80rpx;
+  font-weight: 800;
+  color: #e94560;
+  font-variant-numeric: tabular-nums;
+}
+
+.best-time-unit {
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 12rpx;
+}
+
+.record-count {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* 目标速度选择 */
+.target-section {
+  margin-bottom: 32rpx;
+}
+
+.target-tabs {
+  display: flex;
+  gap: 16rpx;
+}
+
+.target-tab {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6rpx;
+  padding: 20rpx 0;
+  border-radius: 16rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2rpx solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s;
+}
+
+.target-tab.active {
+  background: rgba(233, 69, 96, 0.15);
+  border-color: rgba(233, 69, 96, 0.4);
+}
+
+.target-tab:active {
+  transform: scale(0.97);
+}
+
+.target-tab-num {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.5);
+  font-variant-numeric: tabular-nums;
+}
+
+.target-tab.active .target-tab-num {
+  color: #e94560;
+}
+
+.target-tab-unit {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.target-tab.active .target-tab-unit {
+  color: rgba(233, 69, 96, 0.6);
+}
+
+/* 模式选择 */
+.mode-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 24rpx;
+}
+
+.mode-card {
+  margin-bottom: 24rpx;
+  transition: transform 0.2s;
+}
+
+.mode-card:active {
+  transform: scale(0.98);
+}
+
+.mode-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.mode-icon {
+  font-size: 52rpx;
+  margin-right: 24rpx;
+}
+
+.mode-info {
+  flex: 1;
+}
+
+.mode-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.mode-desc {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.mode-tags {
+  display: flex;
+  gap: 12rpx;
+}
+
+.tag {
+  font-size: 22rpx;
+  color: #e94560;
+  background: rgba(233, 69, 96, 0.12);
+  border: 1rpx solid rgba(233, 69, 96, 0.2);
+  border-radius: 8rpx;
+  padding: 6rpx 16rpx;
+}
+
+.tag-blue {
+  color: #4fc3f7;
+  background: rgba(79, 195, 247, 0.1);
+  border-color: rgba(79, 195, 247, 0.2);
+}
+
+/* 最近记录 */
+.recent-section {
+  margin-bottom: 32rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.section-more {
+  font-size: 26rpx;
+  color: #e94560;
+}
+
+.record-list {
+  padding: 16rpx 32rpx;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.record-mode {
+  font-size: 32rpx;
+}
+
+.record-date {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.record-right {
+  display: flex;
+  align-items: baseline;
+  gap: 6rpx;
+}
+
+.record-time {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.record-unit {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.history-btn-wrap {
+  margin-top: 16rpx;
+}
