@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/timer/timer",
+    "pages/history/history"
+  ],
+  "window": {
+    "navigationBarTitleText": "百公里加速",
+    "navigationBarBackgroundColor": "#1a1a2e",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#16213e",
+    "backgroundTextStyle": "light"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "需要获取你的位置来测量车辆速度"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "startLocationUpdate"
+  ],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
